@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+ <!-- 配置 HelloSpring
+      id 标识  随便写
+      class要生成类hellospring的对象 类路径-->
+      <bean id="hello" class="com.zs.hello.HelloSpring">
+      <property name="ename" value="张飞"></property>
+      </bean>
+        <!-- 帽子 -->
+      <bean id="cap" class="com.zs.hello.Cap">
+      <property name="color" value="绿"></property>
+      </bean>
+        <!-- 汽车 -->
+      <bean id="Car" class="com.zs.hello.Car">
+      </bean>
+      <!-- 摩托 -->
+      <bean id="moto" class="com.zs.hello.Moto">
+      </bean>
+        <!-- 驾驶员 -->
+      <bean id="Driver" class="com.zs.hello.Driver">
+      <!-- 
+      		将汽车装配给驾驶员
+      		name=属性的名字
+      		ref引用=要注入的bean 的ID
+      		 -->
+       <property name="ts" ref="moto"></property>
+       <!-- 构造注入 name=构造参数的名字 -->
+       <constructor-arg name="dcap" ref="cap"></constructor-arg>
+      </bean>
+      <!-- 注入 汽车 -->
+</beans>
